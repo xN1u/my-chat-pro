@@ -1,0 +1,46 @@
+@use '../styles/global.scss';
+
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: global.$theme-white;
+  position: relative;
+}
+
+.btn-container {
+  margin-left: 10px;
+}
+
+.is-reason-btn {
+  margin-top: 5px;
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .input-container {
+    padding: 0 4px;
+  }
+  
+  .btn-container {
+    margin-left: 8px;
+  }
+  
+  .is-reason-btn {
+    margin-top: 4px;
+  }
+}
+
+// 移动端适配
+@media (max-width: 480px) {
+  .input-container {
+    padding: 0 2px;
+  }
+  
+  .btn-container {
+    margin-left: 6px;
+  }
+  
+  .is-reason-btn {
+    margin-top: 3px;
+  }
+}

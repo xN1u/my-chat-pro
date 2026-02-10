@@ -1,0 +1,495 @@
+@use '../styles/global.scss';
+
+.chat-message-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:has(.chat-message-bot) {
+    align-items: flex-start;
+  }
+
+  &:has(.chat-message-user) {
+    align-items: flex-end;
+  }
+
+  .chat-message-bot {
+    width: 100%; 
+    flex-shrink: 0; 
+  }
+
+  .bot-reasoning-none {
+    width: 50%;
+    margin-bottom: 8px;
+    padding: 12px 18px;
+    background-color: global.$theme-light-gray;
+    border: 1px solid global.$theme-mid-gray;
+    border-radius: 12px 12px 12px 0;
+    box-sizing: border-box;
+
+    &.is-expanded {
+      width: 100%;
+    }
+
+    .reasoning-expand-btn {
+      margin: 0;
+      padding: 4px 0;
+      font-size: 13px;
+      color: global.$theme-dark-gray;
+      background-color: global.$theme-light-gray;
+      cursor: pointer;
+      line-height: 1.7;
+      transition: color 0.2s ease;
+    }
+  }
+
+  .chat-message-user {
+    max-width: 50%; 
+    flex-shrink: 0;
+
+    p {
+      margin: 0;
+      padding: 14px 18px;
+      background-color: global.$theme-light-gray;
+      color: global.$theme-darker-gray;
+      font-size: 14px;
+      line-height: 1.7;
+      border-radius: 12px 12px 0 12px;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      white-space: pre-wrap;
+    }
+  }
+
+  .bot-md-content {
+    width: 100%;
+    padding: 14px 18px;
+    background-color: global.$theme-white;
+    border-radius: 12px 12px 12px 0;
+    box-sizing: border-box;
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      color: global.$theme-dark-gray;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    blockquote {
+      margin: 12px 0;
+      padding: 10px 16px;
+      border-left: 4px solid global.$theme-mid-gray;
+      background-color: rgba(global.$theme-light-gray, 0.5);
+      border-radius: 0 6px 6px 0;
+      font-size: 14px;
+      color: global.$theme-dark-gray;
+      p { margin: 0; }
+    }
+    hr {
+      margin: 20px 0;
+      border: 0;
+      border-top: 1px solid global.$theme-mid-gray;
+      opacity: 0.5;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 12px 0;
+      border-radius: 8px;
+      border: 1px solid global.$theme-mid-gray;
+    }
+    .footnotes {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid global.$theme-mid-gray;
+      font-size: 13px;
+      color: global.$theme-mid-gray;
+      ol {
+        padding-left: 20px;
+        li { margin: 4px 0; }
+      }
+      a { color: global.$theme-mid-gray; }
+    }
+    .math.display { margin: 16px 0; } 
+    kbd { 
+      padding: 2px 6px;
+      background-color: global.$theme-mid-gray;
+      color: global.$theme-white;
+      border-radius: 4px;
+      font-size: 12px;
+      margin: 0 2px;
+    }
+    a.anchor {
+      margin-right: 8px;
+      color: global.$theme-mid-gray;
+      &:hover { color: global.$theme-darker-gray; text-decoration: none; }
+    }
+    .md-task-checkbox {
+      margin-right: 6px;
+      cursor: not-allowed; 
+      accent-color: global.$theme-mid-gray;
+      transform: scale(0.9); 
+    }
+    h1, h2, h3, h4, h5, h6 {
+      scroll-margin-top: 20px;
+    }
+    ul ul, ul ol, ol ul, ol ol {
+      margin: 4px 0;
+      padding-left: 20px;
+    }
+    a:not(.anchor) {
+      color: #409eff;
+      &:hover { text-decoration: underline; }
+    }
+    p {
+      margin: 0 0 8px 0;
+      font-size: 14px;
+      &:last-child { margin: 0; }
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin: 16px 0 8px 0;
+      color: global.$theme-darker-gray;
+      font-weight: 600;
+      &:first-child { margin-top: 0; }
+      font-size: 16px;
+    }
+    h1 { font-size: 18px; }
+    ul, ol {
+      margin: 8px 0;
+      padding-left: 24px;
+      li {
+        margin: 4px 0;
+        font-size: 14px;
+      }
+    }
+    code {
+      padding: 2px 6px;
+      margin: 0 2px;
+      background-color: global.$theme-light-gray;
+      border-radius: 4px;
+      font-size: 13px;
+      color: global.$theme-darker-gray;
+      font-family: Consolas, Monaco, monospace;
+    }
+    pre {
+      margin: 12px 0;
+      padding: 16px;
+      background-color: global.$theme-light-gray !important;
+      border-radius: 8px;
+      overflow-x: auto;
+      box-sizing: border-box;
+      code {
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      &::-webkit-scrollbar { height: 4px; }
+      &::-webkit-scrollbar-thumb { background: global.$theme-mid-gray; border-radius: 2px; }
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      border: 1px solid global.$theme-mid-gray;
+      border-radius: 8px;
+      overflow: hidden;
+      th, td {
+        padding: 8px 12px;
+        border: 1px solid global.$theme-mid-gray;
+        text-align: left;
+        font-size: 13px;
+      }
+      th {
+        background-color: global.$theme-light-gray;
+        color: global.$theme-darker-gray;
+        font-weight: 600;
+      }
+      tbody tr:nth-child(even) {
+        background-color: rgba(245, 245, 245, 0.5);
+      }
+    }
+    strong {
+      color: global.$theme-darker-gray;
+      font-weight: 600;
+    }
+    em { opacity: 0.9; }
+    del { color: global.$theme-mid-gray; text-decoration: line-through; }
+    a {
+      color: global.$theme-darker-gray;
+      text-decoration: none;
+      &:hover { text-decoration: underline; opacity: 0.9; }
+    }
+    input[type="checkbox"] {
+      margin-right: 6px;
+      cursor: pointer;
+      accent-color: global.$theme-mid-gray;
+    }
+  }
+
+  .message-del-btn {
+    opacity: 0;
+    align-self: inherit;
+    transition: opacity 0.2s ease;
+    
+    .ant-btn {
+      width: 24px;
+      height: 24px;
+      background: transparent !important;
+      border: none !important;
+      color: #ff4d4f !important;
+    }
+  }
+
+  &:hover .message-del-btn {
+    opacity: 1;
+  }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .chat-message-item {
+    .bot-reasoning-none {
+      width: 70%;
+      margin-bottom: 6px;
+      padding: 10px 14px;
+      border-radius: 10px 10px 10px 0;
+      
+      &.is-expanded {
+        width: 100%;
+      }
+      
+      .reasoning-expand-btn {
+        padding: 3px 0;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+    }
+    
+    .chat-message-user {
+      max-width: 70%;
+      
+      p {
+        padding: 12px 16px;
+        font-size: 13px;
+        line-height: 1.6;
+        border-radius: 10px 10px 0 10px;
+      }
+    }
+    
+    .bot-md-content {
+      padding: 12px 16px;
+      border-radius: 10px 10px 10px 0;
+      
+      blockquote {
+        margin: 10px 0;
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+      
+      hr {
+        margin: 16px 0;
+      }
+      
+      img {
+        margin: 10px 0;
+        border-radius: 6px;
+      }
+      
+      .footnotes {
+        margin-top: 20px;
+        padding-top: 12px;
+        font-size: 12px;
+        
+        ol {
+          padding-left: 16px;
+          li { margin: 3px 0; }
+        }
+      }
+      
+      kbd {
+        padding: 1px 4px;
+        font-size: 11px;
+        margin: 0 1px;
+      }
+      
+      p {
+        margin: 0 0 6px 0;
+        font-size: 13px;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        margin: 14px 0 6px 0;
+        font-size: 14px;
+      }
+      
+      h1 { font-size: 16px; }
+      
+      ul, ol {
+        margin: 6px 0;
+        padding-left: 20px;
+        li {
+          margin: 3px 0;
+          font-size: 13px;
+        }
+      }
+      
+      code {
+        padding: 1px 4px;
+        margin: 0 1px;
+        font-size: 12px;
+      }
+      
+      pre {
+        margin: 10px 0;
+        padding: 12px;
+        border-radius: 6px;
+        
+        code {
+          font-size: 12px;
+          line-height: 1.5;
+        }
+      }
+      
+      table {
+        margin: 10px 0;
+        border-radius: 6px;
+        
+        th, td {
+          padding: 6px 10px;
+          font-size: 12px;
+        }
+      }
+    }
+    
+    .message-del-btn {
+      .ant-btn {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+// 移动端适配
+@media (max-width: 480px) {
+  .chat-message-item {
+    .bot-reasoning-none {
+      width: 85%;
+      margin-bottom: 4px;
+      padding: 8px 12px;
+      border-radius: 8px 8px 8px 0;
+      
+      .reasoning-expand-btn {
+        padding: 2px 0;
+        font-size: 11px;
+        line-height: 1.5;
+      }
+    }
+    
+    .chat-message-user {
+      max-width: 85%;
+      
+      p {
+        padding: 10px 14px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 8px 8px 0 8px;
+      }
+    }
+    
+    .bot-md-content {
+      padding: 10px 14px;
+      border-radius: 8px 8px 8px 0;
+      
+      blockquote {
+        margin: 8px 0;
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+      
+      hr {
+        margin: 12px 0;
+      }
+      
+      img {
+        margin: 8px 0;
+        border-radius: 4px;
+      }
+      
+      .footnotes {
+        margin-top: 16px;
+        padding-top: 10px;
+        font-size: 11px;
+        
+        ol {
+          padding-left: 14px;
+          li { margin: 2px 0; }
+        }
+      }
+      
+      kbd {
+        padding: 1px 3px;
+        font-size: 10px;
+      }
+      
+      p {
+        margin: 0 0 4px 0;
+        font-size: 12px;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        margin: 12px 0 4px 0;
+        font-size: 13px;
+      }
+      
+      h1 { font-size: 14px; }
+      
+      ul, ol {
+        margin: 4px 0;
+        padding-left: 16px;
+        li {
+          margin: 2px 0;
+          font-size: 12px;
+        }
+      }
+      
+      code {
+        padding: 1px 3px;
+        font-size: 11px;
+      }
+      
+      pre {
+        margin: 8px 0;
+        padding: 10px;
+        border-radius: 4px;
+        
+        code {
+          font-size: 11px;
+          line-height: 1.4;
+        }
+      }
+      
+      table {
+        margin: 8px 0;
+        border-radius: 4px;
+        
+        th, td {
+          padding: 4px 8px;
+          font-size: 11px;
+        }
+      }
+    }
+    
+    .message-del-btn {
+      .ant-btn {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

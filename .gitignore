@@ -1,0 +1,64 @@
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# IDE/编辑器文件
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 日志文件
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 前端忽略规则
+
+# 依赖包
+front/node_modules
+
+# 构建输出
+front/dist
+front/dist-ssr
+front/*.local
+
+# 前端环境变量文件
+front/.env
+
+# 后端忽略规则
+
+# Go 构建输出
+server/tmp/
+server/*.exe
+server/*.exe~
+server/*.dll
+server/*.so
+server/*.dylib
+
+# Go 依赖缓存
+server/go.sum
+
+# 后端环境变量文件
+server/.env
+
+# 其他忽略规则
+
+# 临时文件
+*.tmp
+*.temp
+
+# 备份文件
+*.bak
+*.backup
+
+# 编译错误日志
+server/tmp/build-errors.log

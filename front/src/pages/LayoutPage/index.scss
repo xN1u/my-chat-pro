@@ -1,0 +1,223 @@
+// 引入全局主题变量（as global 别名，变量调用为 global.$xxx）
+@use '../../styles/global.scss' as global;
+
+// 根容器
+.layout-page {
+  height: 100vh;
+  background-color: global.$theme-white;
+  overflow: hidden;
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .sider {
+    display: none !important;
+  }
+  
+  .content {
+    margin-left: 0 !important;
+  }
+  
+  .layout-header {
+    padding: 0 12px !important;
+    
+    .header-title {
+      font-size: 14px;
+    }
+    
+    .float-button {
+      width: 28px !important;
+      height: 28px !important;
+    }
+  }
+  
+  .content {
+    height: calc(100vh - 48px) !important;
+  }
+}
+
+// 移动端适配
+@media (max-width: 480px) {
+  .layout-header {
+    .header-title {
+      font-size: 13px;
+    }
+  }
+}
+
+// 侧边栏核心样式
+.sider {
+  background-color: global.$theme-light-gray !important; // 覆盖antd默认样式
+  padding: 16px;
+  box-sizing: border-box !important; 
+  color: global.$theme-dark-gray !important;
+
+  // 侧边栏头部-新对话按钮区
+  .sider-header {
+    margin-bottom: 12px; // 微调间距更紧凑
+
+    .ant-btn {
+      width: 100%;
+      height: 36px;
+      background-color: global.$theme-dark-gray !important;
+      border-color: global.$theme-dark-gray !important;
+      color: global.$theme-white !important;
+      border-radius: 6px !important; // 小圆角更简洁
+      transition: all 0.2s ease;
+
+      &:hover,
+      &:active {
+        background-color: global.$theme-darker-gray !important;
+        border-color: global.$theme-darker-gray !important;
+      }
+    }
+  }
+
+  // 分割线样式优化
+  hr {
+    border: 0;
+    border-top: 1px solid global.$theme-mid-gray;
+    margin: 12px 0;
+    height: 0;
+  }
+
+  // 会话列表容器
+  .conversation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .conversation-item {
+      position: relative;
+      padding: 10px 40px 10px 12px; // 微调内边距，适配删除按钮
+      margin-bottom: 6px; // 缩小项间距更紧凑
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background-color: transparent;
+
+      // hover态：浅灰背景
+      &:hover {
+        background-color: global.$theme-mid-gray;
+      }
+      // active选中态：加深一点，和hover区分开（豆包风格：选中态更明显）
+      &.active {
+        background-color: global.$theme-mid-gray;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); // 微阴影增强选中感，不突兀
+      }
+
+      // 会话内容容器（标题+最后消息）
+      > div {
+        width: 100%;
+        height: 100%;
+      }
+
+      // 会话标题
+      .conversation-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: global.$theme-darker-gray;
+        margin: 0 0 2px 0; // 缩小和最后消息的间距
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 1.4;
+      }
+
+      // 最后一条消息预览
+      .conversation-last-msg {
+        font-size: 12px;
+        color: global.$theme-dark-gray;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 1.4;
+        opacity: 0.9; 
+      }
+
+      .ant-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        background: transparent !important;
+        border: none !important;
+        color: global.$theme-dark-gray !important;
+        opacity: 0;
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: #ff4d4f !important;
+          background: transparent !important;
+        }
+      }
+
+      &:hover .ant-btn {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Header头部（折叠按钮+标题区）
+.layout-header {
+  z-index: 1 !important;
+  width: 100% !important;
+  height: 48px !important; // 固定高度，更规整
+  padding: 0 16px !important;
+  margin: 0 !important;
+  background-color: global.$theme-white !important;
+  border-bottom: 1px solid global.$theme-mid-gray !important; // 用全局中灰，统一主题
+  box-sizing: border-box !important;
+
+  // Header内部容器：flex布局，实现按钮左、标题居中
+  > div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .float-button {
+    position: static !important;
+    top: 0 !important;
+    z-index: 999 !important;
+    width: 32px !important;
+    height: 32px !important;
+    background-color: global.$theme-white !important;
+    border: 1px solid global.$theme-mid-gray !important;
+    color: global.$theme-dark-gray !important;
+    box-shadow: none !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: global.$theme-light-gray !important;
+      color: global.$theme-darker-gray !important;
+      border-color: global.$theme-mid-gray !important;
+    }
+  }
+
+  .header-title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    font-weight: 500;
+    color: global.$theme-darker-gray;
+    margin: 0;
+  }
+}
+
+// 内容区域（Outlet）
+.content {
+  background-color: global.$theme-white !important;
+  color: global.$theme-dark-gray !important;
+  height: calc(100vh - 48px) !important;
+  overflow-y: hidden !important;
+}

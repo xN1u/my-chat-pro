@@ -1,0 +1,123 @@
+$theme-white: #ffffff;       // 纯白（表单背景、字体高亮）
+$theme-light-gray: #f5f5f5;  // 浅灰（页面背景、hover 浅效果）
+$theme-mid-gray: #e0e0e0;    // 中灰（边框、分割线）
+$theme-dark-gray: #666666;   // 深灰（常规字体、按钮背景）
+$theme-darker-gray: #333333; // 超深灰（标题字体、hover 深效果）
+
+// ---------------------- 全局通用样式 ----------------------
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: 14px;
+  overflow: hidden;
+}
+body {
+  height: 100%;
+  color: $theme-darker-gray;
+  font: 1em/1.4 'Microsoft Yahei', 'PingFang SC', 'Avenir', 'Segoe UI',
+    'Hiragino Sans GB', 'STHeiti', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei',
+    sans-serif;
+}
+
+// 响应式字体大小
+@media (max-width: 768px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+}
+body,
+ul,
+h1,
+h3,
+h4,
+p,
+dl,
+dd {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #333;
+  outline: none;
+}
+i {
+  font-style: normal;
+}
+input[type='text'],
+input[type='search'],
+input[type='password'],
+input[type='checkbox'] {
+  padding: 0;
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+  &::placeholder {
+    color: #ccc;
+  }
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+}
+ul {
+  list-style: none;
+}
+
+// Input 组件
+.ant-input {
+  background-color: $theme-white;
+  border: 1px solid $theme-mid-gray;
+  border-radius: 8px;
+  color: $theme-darker-gray;
+  transition: all 0.3s;
+
+  &:focus,
+  &:hover {
+    border-color: $theme-dark-gray;
+    box-shadow: 0 0 0 2px rgba(102, 102, 102, 0.1);
+    outline: none;
+  }
+
+  .ant-input-prefix {
+    color: $theme-dark-gray;
+  }
+}
+
+// Button 组件
+.ant-btn {
+  border-radius: 8px;
+  transition: all 0.3s;
+
+  &.ant-btn-primary {
+    background-color: $theme-dark-gray;
+    border-color: $theme-dark-gray;
+    color: $theme-white;
+    font-weight: 500;
+  }
+  &.ant-btn-text {
+    background-color: transparent;
+    border-color: transparent;
+    color: $theme-darker-gray;
+    font-weight: 300;
+  }
+}
+
+// Form 组件
+.ant-form-item {
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
