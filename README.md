@@ -53,6 +53,7 @@ MyChat/
 - ✅ 对话管理（创建/删除对话）
 - ✅ 消息管理（发送/接收/删除消息）
 - ✅ AI 智能回复
+- ✅ 上下文缓存
 - ✅ 流式响应（SSE）
 - ✅ Markdown 支持
 - ✅ 代码高亮
@@ -86,7 +87,9 @@ cd front
 pnpm install
 ```
 
-3. 启动开发服务器
+3. 配置.env
+
+4. 启动开发服务器
 ```bash
 pnpm dev
 ```
@@ -103,7 +106,9 @@ cd server
 go mod tidy
 ```
 
-3. 启动后端服务器
+3. 配置.env
+
+4. 启动后端服务器
 ```bash
 go run main.go
 ```
